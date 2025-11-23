@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>三模块 - 挣钱 / 强化 / 线下老师实战</title>
+  <style>
+    :root{
+      --money:#f59e0b;
+      --enhance:#3b82f6;
+      --battle:#ef4444;
+      --service:#10b981;   /* 新增：客服绿色 */
+      --fg:#111827;
+      --muted:#6b7280;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --radius:16px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",Arial,sans-serif;}
+
+    /* 顶部标签栏 */
+    .navbar{
+      position:sticky;top:0;z-index:10;
+      display:flex;gap:8px;
+      padding:12px; background:#fff;border-bottom:1px solid #e5e7eb;
+      backdrop-filter:saturate(1.2) blur(4px);
+    }
+    .tab{
+      flex:1;border:none;border-radius:999px;padding:12px 10px;
+      font-size:15px;font-weight:600;cursor:pointer;background:#f3f4f6;color:#374151;
+    }
+    .tab.active{background:#111827;color:#fff;}
+    .tab[data-color="money"].active{background:var(--money);}
+    .tab[data-color="enhance"].active{background:var(--enhance);}
+    .tab[data-color="battle"].active{background:var(--battle);}
+    .tab[data-color="service"].active{background:var(--service);} /* 新增 */
+
+    .container{padding:6px 14px;max-width:980px;margin:0 auto;}
+    .section{display:none;animation:fade .2s ease;}
+    .section.active{display:block;}
+    @keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    /* 卡片样式全部保留你原来的 */
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:var(--radius);padding:5px;margin:3px 0;box-shadow:0 1px 2px rgba(0,0,0,.04);text-align:center;}
+    .card b{display:block;text-align:center;margin-bottom:3px;}
+    .card p{text-align:justify;text-align-last:center;line-height:1.6;}
+    .title{display:flex;align-items:center;gap:8px;margin:6px 2px 10px;font-size:18px;font-weight:700;}
+    .title .dot{width:10px;height:10px;border-radius:50%;}
+    .muted{color:var(--muted);font-size:14px;}
+    .row{display:flex;gap:10px;flex-wrap:wrap;}
+    .row .card{flex:1}
+    .logo-card{width:calc(50% - 10px);margin:2px auto;text-align:center;padding:4px;overflow:hidden;border-radius:12px;}
+    .tx-logo{width:100%;height:125px;object-fit:cover;object-position:center;border-radius:12px;display:block;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform .2s ease;}
+    .tx-logo:hover{transform:scale(1.05);}
+    .download-tip{font-size:14px;color:var(--muted);margin-top:8px;}
+    @media (max-width:767px){.logo-card{width:100%;}}
+
+    .dock{position:sticky;bottom:0;background:#fff;border-top:1px solid #e5e7eb;display:flex;gap:10px;padding:10px;}
+    .btn{flex:1;border:none;border-radius:12px;padding:12px 14px;font-weight:700;background:#111827;color:#fff;cursor:pointer;}
+    .btn.secondary{background:#e5e7eb;color:#111827}
+  </style>
+</head>
+<body>
+
+  <!-- 顶部标签栏 -->
+  <nav class="navbar">
+    <button class="tab active" data-target="money" data-color="money">💰白嫖100</button>
+    <button class="tab" data-target="enhance" data-color="enhance">💊限送伟哥</button>
+    <button class="tab" data-target="battle" data-color="battle">⚔️真人实战</button>
+  </nav>
+
+  <!-- 独立客服导航（已补全颜色） -->
+  <nav class="navbar single">
+    <button class="tab" data-target="service" data-color="service">联系在线客服</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- 挣钱模块（完全没动） -->
+    <section id="money" class="section active">
+      <!-- 你原来的全部内容一字不改 -->
+      <div style="background: linear-gradient(90deg, #ff3b30, #ff9500); color: #fff; text-align: center; padding: 14px 16px; border-radius: 12px; margin: 10px 0 12px; font-weight: 700; font-size: 16px; box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3); animation: pulse 2s infinite;">
+        限时活动：今晚24点前注册送100体验金！
+      </div>
+
+      <div class="card logo-card">
+        <a href="https://www.txty37.vip:30122/?i_code=2103594" target="_blank">
+          <img src="tx_logo.png" alt="天行体育" class="tx-logo">
+        </a>
+        <div class="download-tip">点击图片下载</div>
+      </div>
+
+      <div class="row">
+        <div class="card"><b>福利A</b><p class="muted">注册即送100体验金<br>一倍流水提现</p></div>
+        <div class="card"><b>福利B</b><p class="muted">首存100送100<br>一倍流水提现</p></div>
+      </div>
+
+      <div class="card" style="background:#fffbeb;border:1px solid #fcd34d;margin:14px 0;">
+        <b>真实玩家刚提现</b>
+        <p style="text-align:center;font-size:16px;color:#d97706;font-weight:600;line-height:1.8;margin:8px 0 0;">
+          “注册领了100体验金，滚球玩了8分钟，<br>直接可提现92块到微信！”-小刚
+        </p>
+      </div>
+
+      <div style="text-decoration:none;cursor:pointer;" onclick="document.querySelector('#service').classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelector('.navbar.single .tab').classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('service').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});">
+  <div style="background:linear-gradient(90deg,#10b981,#34d399);color:#fff;text-align:center;padding:20px;border-radius:16px;margin:20px 0;font-size:20px;font-weight:800;box-shadow:0 10px 30px rgba(16,185,129,.4);animation:bounce 2s infinite;display:block;">
+    立刻联系客服领取100体验金<br>
+    <span style="font-size:15px;opacity:0.95;">（12:00 - 24:00 在线）</span>
+  </div>
+</div>
+
+      <div class="card">
+        <b>福利领取方式</b>
+        <ul class="muted" style="margin:6px 0 0 18px;">
+          <li>点击上方图片注册</li>
+          <li> 截图用户名发给客服</li>
+          <li> 体验金秒到，立即开玩！</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 强化模块（原样保留） -->
+        <!-- 限送伟哥模块 -->
+    <section id="enhance" class="section">
+            <!-- 顶部紫色横幅 - 整体浮动 + 可点跳转（超级吸睛！） -->
+      <a href="https://mjmm.h9fs8.cyou?channelCode=kjsdmk57" target="_blank" style="display:block; margin:12px 0; border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(139,92,246,.5); animation:bounce 2s infinite; text-decoration:none;">
+        <div style="background:linear-gradient(120deg,#8b5cf6,#ec4899); color:#fff; text-align:center; padding:20px 16px; font-weight:800; font-size:19px;">
+          🔥 限时48小时 · 注册即送正品伟哥 2粒（价值199元）免费领！
+        </div>
+      </a>
+      <div style="text-align:center;color:#8b5cf6;font-weight:700;font-size:17px;margin:20px 0;">
+        点击上方立即注册领取
+      </div>
+      
+
+
+    <div class="row">
+        <div class="card"><b>新用户专享</b><p class="muted">首次注册免费领取<br>万艾可试用装两粒</p></div>
+        <div class="card"><b>隐私保护</b><p class="muted">兑换码药店自取<br>快递隐私发货（任选）</p></div>
+      </div>
+      <!-- 用户反馈 -->
+      <div class="card" style="background:#fffbeb;border:2px dashed #f59e0b;margin:16px 0;">
+        <b>刚领到的兄弟反馈</b>
+        <p style="text-align:center;font-size:16px;color:#d97706;font-weight:700;line-height:2;">
+          “注册不到3分钟，客服直接发兑换码，药店自提了2粒正品伟哥，牛逼！”<br>
+          ——老王 11月20日
+        </p>
+      </div>
+
+      <!-- 领取流程 -->
+      <div class="card">
+        <b style="color:#ec4899;font-size:19px;">三步免费领伟哥</b>
+        <ol style="margin:12px 0;padding-left:22px;line-height:2;font-size:15px;">
+          <li>点击上方图片完成注册（30秒）</li>
+          <li>注册成功后截图用户名</li>
+          <li>扫码添加下方专属客服 → 秒发兑换码</li>
+        </ol>
+      </div>
+
+      <!-- 强烈CTA按钮（跳转到客服页） -->
+      <div style="text-decoration:none;cursor:pointer;" onclick="document.querySelector('#service').classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelector('.navbar.single .tab').classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('service').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});">
+        <div style="background:linear-gradient(120deg,#ec4899,#f783ac);color:#fff;text-align:center;padding:22px;border-radius:16px;margin:20px 0 10px;font-size:21px;font-weight:800;box-shadow:0 12px 35px rgba(236,72,153,.5);animation:bounce 2s infinite;">
+          立刻联系专属客服领伟哥<br>
+          <span style="font-size:15px;opacity:0.95;">（24小时在线 · 秒回）</span>
+        </div>
+      </div>
+
+      <!-- 紧迫感提示 -->
+      <div class="card muted" style="margin-top:20px;font-size:14px;">
+        <p style="margin:8px 0;">
+          ⚠️ 活动名额每天限量200份，先到先得<br>
+          ⚠️ 领取后72小时内到指定药店自提（全国3000+连锁药店支持）
+        </p>
+      </div>
+    </section>
+
+    <!-- 实战模块（原样保留） -->
+    <!-- 真人实战模块（务实版） -->
+<section id="battle" class="section">
+
+  <!-- 顶部红 banner：实诚说明 -->
+  <div style="background:linear-gradient(120deg,#dc2626,#ef4444);color:#fff;text-align:center;padding:20px 16px;border-radius:18px;margin:12px 0;box-shadow:0 10px 30px rgba(239,68,68,.4);">
+    <div style="font-size:20px;font-weight:800;">真人线下实战 · 全国安排</div>
+    <div style="font-size:15px;margin-top:8px;opacity:0.95;">
+      上门 楼凤 会所 · 见到人满意再付全款
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card"><b>真实规则</b><p class="muted">先付50元订金<br>找不到人全退<br>见到人不满意全退</p></div>
+    <div class="card"><b>为什么收订金</b><p class="muted">找人花时间<br>避免被放鸽子<br>50过滤一下彼此省事</p></div>
+  </div>
+
+  <!-- 核心话术卡片（最重点） -->
+  <div class="card" style="background:#fef2f2;border:2px solid #fca5a5;margin:18px 0;padding:18px;">
+    <b style="color:#dc2626;font-size:18px;">怕被骗？先把免费的全白嫖了！</b>
+    <p style="margin:12px 0 0;line-height:1.9;font-size:15.5px;">
+      ✅ 白嫖100可提现 → 加客服直接领<br>
+      ✅ 正品伟哥2粒 → 加客服直接领<br>
+      上面两个0成本，先到手再考虑实战也不迟<br>
+      <b style="color:#dc2626;">想实战的兄弟：50块订金是底线</b>
+      找不到人我退你，见到人不满意我退你<br>
+      就这样了，不接受订金的我不浪费大家时间
+    </p>
+  </div>
+
+  <!-- 最近真实案例 -->
+  <div class="card" style="background:#fffbeb;border:1px dashed #f59e0b;">
+    <b>昨晚真实案例</b>
+    <p style="text-align:center;color:#d97706;font-weight:600;line-height:1.9;">
+      广州天河区 · 付50订金 → 25分钟出6个照片<br>
+      选了92分的 → 50分钟上门 → 见面满意付现金<br>
+      “人和图片对版，爽快，靠谱！” —— 小李
+    </p>
+  </div>
+
+  <!-- 三步流程（务实版） -->
+  <div class="card">
+    <b style="color:#dc2626;">实战安排流程</b>
+    <ol style="margin:12px 0;padding-left:22px;line-height:2.1;font-size:15.5px;">
+      <li>先把“白嫖100”和“伟哥”领到手</li>
+      <li>觉得OK了再来找我实战</li>
+      <li>报坐标 + 预算 → 付50订金（微信/支付宝）</li>
+      <li>30分钟-2小时出真人照片</li>
+      <li>一线城市一小时内，小县城请提前</li>
+      <li>尽量提前安排，不要临时加急</li>
+      <li>这个行业没有谁能说全国都有人</li>
+      <li>我们也不是全能的，如果你的城市没有人会直接告知并退款--就这样！祝愉快</li>
+    </ol>
+  </div>
+
+<!-- 最强CTA：直接跳客服（粉色版） -->
+<div style="text-decoration:none;cursor:pointer;" 
+     onclick="document.querySelector('#service').classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelector('.navbar.single .tab').classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('service').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});">
+  <div style="background:linear-gradient(120deg,#ec4899,#f783ac);color:#fff;text-align:center;padding:26px;border-radius:16px;margin:24px 0 12px;font-size:23px;font-weight:800;box-shadow:0 12px 35px rgba(236,72,153,.5);">
+    立即加客服（先领免费福利再聊实战）<br>
+    <span style="font-size:16px;opacity:0.95;">24小时在线 · 先白嫖后付费更安心</span>
+  </div>
+</div>
+
+  <!-- 底部小字再补一刀 -->
+  <div class="card muted" style="background:#fef2f2;font-size:14px;">
+    <p style="margin:8px 0;color:#991b1b;">
+      再次强调：50元订金只是为了杜绝乱约<br>
+      找不到人、见到人不满意 → 秒退不废话<br>
+      不想付订金的兄弟就先把100现金和伟哥白嫖了当我请客
+    </p>
+  </div>
+
+</section>
+
+    <!-- ★★★★★ 下面是我们刚才新增的 safew 客服页面 ★★★★★ -->
+    <section id="service" class="section">
+      <div style="padding:2px 0;text-align:center;">
+        <div style="background:linear-gradient(135deg,#f783ac,#fda4c5);color:#fff;padding:6px 4px;border-radius:20px;margin:5px 0 1px;">
+          <h2 style="margin:0 0 10px;font-size:26px;">在线客服专属通道</h2>
+          <p style="margin:0;font-size:17px;opacity:0.95;">必须使用 safew 才能联系我<br>防封号 · 永不掉线 · 秒回</p>
+        </div>
+
+      
+
+        <div class="card" style="margin:20px 0;">
+          <b>为什么必须用 safew？</b>
+          <p class="muted">普通TG在国内经常掉线、被封号<br>safew 是中国专属安全版，100%能加上我</p>
+        </div>
+
+        <a href="https://www.safew.org" target="_blank" style="display:block;background:linear-gradient(90deg,#10b981,#34d399);color:#fff;padding:22px;font-size:22px;font-weight:800;border-radius:16px;margin:30px 0;box-shadow:0 12px 30px rgba(16,185,129,.4);text-decoration:none;animation:bounce 2s infinite;">
+          立即下载 safew（安卓版）
+        </a>
+                <div class="card" style="margin:20px 0;">
+          <b>安卓用户：安装使用注意</b>
+          <p class="muted">下载后：请开飞行模式安装  断你的开WiFi 及 流量<br>隐私注意：请勿使用手机号注册<br>请使用邮箱登录，如QQ邮箱等任何邮箱</p>
+        </div>
+                <a href="ios-guide.html" target="_blank" style="display:block;background:linear-gradient(90deg,#10b981,#34d399);color:#fff;padding:22px;font-size:22px;font-weight:800;border-radius:16px;margin:30px 0;box-shadow:0 12px 30px rgba(16,185,129,.4);text-decoration:none;animation:bounce 2s infinite;">
+  立即下载 safew（ios版）
+</a>
+
+
+
+        <div class="card">
+          <b>下载后扫码添加客服</b>
+          <img src="zq.png" style="width:100%;max-width:260px;border-radius:12px;margin:15px 0;">
+          <p class="muted">用户名：@mrzhao</p>
+        </div>
+              </div>
+
+      <!-- 最终版：纯按钮、零白条、点击即复制 -->
+      <div style="text-align:center;margin:20px 0 -10px 0;">
+        <span 
+          onclick="navigator.clipboard.writeText('milk0928@outlook.com')"
+          style="
+            display:inline-block;
+            padding:16px 40px;
+            background:#007bff;
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            border-radius:20px;
+            cursor:pointer;
+            user-select:none;
+            box-shadow:0 6px 18px rgba(0,123,255,0.45);
+            transition:transform 0.2s, box-shadow 0.2s;
+          "
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,123,255,0.55)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 6px 18px rgba(0,123,255,0.45)'"
+        >
+          milk0928@outlook.com
+        </span>
+      </div>
+
+      <!-- 紧迫感提示 -->
+      <div class="card muted" style="margin-top:20px;font-size:14px;">
+      </div>
+      
+       <!-- 紧迫感提示 -->
+      <div class="card muted" style="margin-top:20px;font-size:14px;">
+        <p style="margin:8px 0;">
+          ⚠️ 若无法下载 safew，联系不上客服<br>
+          上方是我的私人邮箱～<br>
+          编辑邮件标题或内容写「领取福利」发送给我<br>
+          我会在24小时内回复微信号或QQ号，方便后续沟通
+        </p>
+      </div>
+    </section>
+    <!-- ★★★★★ safew 页面结束 ★★★★★ -->
+
+  </main>
+
+  <div class="dock">
+    <button class="btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">回到顶部</button>
+    <button class="btn" onclick="window.open('https://www.txty181.vip:32800/?i_code=2103594','_blank')">立即注册领取100现金</button>
+
+  <script>
+    // 原有三个tab切换逻辑
+    document.querySelectorAll('.navbar:not(.single) .tab').forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+        document.getElementById(tab.dataset.target).classList.add('active');
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    });
+
+    // 新增：单独客服按钮也能点
+    document.querySelector('.navbar.single .tab').addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+      document.getElementById('service').classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  </script>
+    <!-- 全局统一动画（只此一份，全站通用，永不冲突） -->
+  <style>
+    @keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:0.88} }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  </style>
+</body>
+</html>
+</body>
+</html>
